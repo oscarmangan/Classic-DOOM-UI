@@ -1,10 +1,8 @@
 # SciFi UI Project
 
-Name:
+Name: Oscar Mangan
 
-Student Number: 
-
-Fork this repository and use it a starter project for your assignment
+Student Number: C17486986
 
 # Description of the assignment
 
