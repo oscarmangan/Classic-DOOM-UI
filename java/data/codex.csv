@@ -1,7 +1,7 @@
-Name,Health,Attack,Special,Origin
-Imp,10,10,Fireball,Kadingir
-Baron,200,60,Argent,Dnur
-Cacodemon,60,40,Charger,Dnur
-Hellghast,70,30,Missiles,Rutr
-Revenant,120,80,Fireball,Mars
-Possessed,5,5,Fists,Earth
+Name,Health,Attack,Special,Origin,Image
+Imp,10,10,Fireball,Kadingir,img1
+Baron,200,60,Argent,Dnur,img2
+Cacodemon,60,40,Charger,Dnur,img5
+Hellghast,70,30,Missiles,Rutr,img6
+Revenant,120,80,Fireball,Mars,img4
+Possessed,5,5,Fists,Earth,img3

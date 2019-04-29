@@ -3,15 +3,14 @@ package ie.tudublin;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.data.Table;
 import processing.data.TableRow;
 
 public class UI extends PApplet
 {
-    Button b;
-    MovingCircle mc;
-
     boolean[] keys = new boolean[1024];
+    PImage img1, img2, img3, img4, img5, img6;
 
     public void keyPressed()
     {
@@ -60,6 +59,12 @@ public class UI extends PApplet
         radar = new Radar(this, 1, 680, height / 5, 50);
         loadCSV();
         printCSV();
+        img1 = loadImage("imp.png");
+        img2 = loadImage("baron.png");
+        img3 = loadImage("possessed.png");
+        img4 = loadImage("revenant.png");
+        img5 = loadImage("cacodemon.png");
+        img6 = loadImage("hellghast.png");
     }
 
     public void draw()
@@ -72,6 +77,9 @@ public class UI extends PApplet
         line(30, 510, 90, 570);
         line(90, 570, 770, 570);
         line(770, 570, 770, 90);
+
+        image(img1, 100, 100);
+
 
         //Mouse cursor
         line(mouseX, mouseY, mouseX + width, mouseY);
