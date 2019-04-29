@@ -22,7 +22,7 @@ public class Radar
     public void render()
     {
         ui.noFill();
-        ui.stroke(45, 149, 250);
+        ui.stroke(255, 0, 0);
         ui.strokeWeight(2);
         ui.ellipse(pos.x, pos.y, radius * 2, radius * 2);
         ui.ellipse(pos.x, pos.y, radius * 3, radius * 3);
