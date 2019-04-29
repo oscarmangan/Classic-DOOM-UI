@@ -45,11 +45,12 @@ public class UI extends PApplet
     {
         background(0,0,89);
         stroke(45, 149, 250);
-        line(30, 30, 770, 30);
-        line(30, 30, 30, 530);
-        line(30, 530, 90, 570);
+        line(30, 30, 710, 30);
+        line(710, 30, 770, 90);
+        line(30, 30, 30, 510);
+        line(30, 510, 90, 570);
         line(90, 570, 770, 570);
-        line(770, 570, 770, 30);
+        line(770, 570, 770, 90);
         b.render();
 
         mc.update();
