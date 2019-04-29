@@ -21,21 +21,18 @@ public class Radar
 
     public void render()
     {
-        /*ui.pushMatrix();        
         ui.noFill();
-        ui.stroke(0, 200, 0);
-        ui.translate(pos.x, pos.y);
-        ui.rotate(theta);
-        ui.ellipse(0, 0, radius * 2, radius * 2);
-        ui.line(0,0,0,-radius);
-        ui.popMatrix();
-        */
-
-        ui.noFill();
+        ui.stroke(45, 149, 250);
+        ui.strokeWeight(2);
         ui.ellipse(pos.x, pos.y, radius * 2, radius * 2);
+        ui.ellipse(pos.x, pos.y, radius * 3, radius * 3);
         float x2 = pos.x + (float) Math.sin(theta) * radius;
         float y2 = pos.y - (float) Math.cos(theta) * radius;
         ui.line(pos.x, pos.y, x2, y2);
+        ui.line(pos.x, pos.y, pos.x + 75, pos.y);
+        ui.line(pos.x, pos.y, pos.x - 75, pos.y);
+        ui.line(pos.x, pos.y, pos.x, pos.y + 75);
+        ui.line(pos.x, pos.y, pos.x, pos.y - 75);
     }
 
     float timeDelta = 0.5f / 60.0f;
