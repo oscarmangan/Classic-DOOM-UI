@@ -38,7 +38,7 @@ public class Radar
         ui.line(pos.x, pos.y, x2, y2);
     }
 
-    float timeDelta = 1.0f / 60.0f;
+    float timeDelta = 0.5f / 60.0f;
 
     public void update()
     {

@@ -27,7 +27,7 @@ public class UI extends PApplet
 
     public void settings()
     {
-        size(800, 800);
+        size(800, 600);
         // Use fullscreen instead of size to make your interface fullscreen
         //fullScreen(P3D); 
     }
@@ -43,7 +43,13 @@ public class UI extends PApplet
 
     public void draw()
     {
-        background(0);
+        background(0,0,89);
+        stroke(45, 149, 250);
+        line(30, 30, 770, 30);
+        line(30, 30, 30, 530);
+        line(30, 530, 90, 570);
+        line(90, 570, 770, 570);
+        line(770, 570, 770, 30);
         b.render();
 
         mc.update();
