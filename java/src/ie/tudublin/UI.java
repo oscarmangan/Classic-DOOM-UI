@@ -1,6 +1,10 @@
 package ie.tudublin;
 
+import java.util.ArrayList;
+
 import processing.core.PApplet;
+import processing.data.Table;
+import processing.data.TableRow;
 
 public class UI extends PApplet
 {
@@ -24,6 +28,21 @@ public class UI extends PApplet
         return keys[c] || keys [Character.toUpperCase(c)];
     }
     
+    public void loadCSV()
+    {
+        Table table = loadTable("codex.csv", "header");
+        for (TableRow row : table.rows()) 
+        {
+            Demon demon = new Demon(row);
+            demons.add(demon);
+        }
+    }
+
+    public void printCSV() {
+        for (Demon demon : demons) {
+            System.out.println(demon);
+        }
+    }
 
     public void settings()
     {
@@ -39,6 +58,8 @@ public class UI extends PApplet
        // b = new Button(this, 50, 50, 100, 50, "I am a button");
         //mc = new MovingCircle(this, width / 2, height * .75f, 50);
         radar = new Radar(this, 1, 680, height / 5, 50);
+        loadCSV();
+        printCSV();
     }
 
     public void draw()
@@ -57,7 +78,14 @@ public class UI extends PApplet
         line(mouseX, mouseY, mouseX - width, mouseY);
         line(mouseX, mouseY, mouseX, mouseY + height);
         line(mouseX, mouseY, mouseX, mouseY - height);
+        noCursor();
 
+        //UI Title
+        textSize(40);
+        text("DOOM CODEX", 40, 70);
+        fill(205,0,0);
+
+        //Radar
         radar.update();
         radar.render();
 
@@ -66,5 +94,6 @@ public class UI extends PApplet
             System.out.println("Left arrow key pressed");
         }
     }
+    private ArrayList<Demon> demons = new ArrayList<Demon>();
 }
 
