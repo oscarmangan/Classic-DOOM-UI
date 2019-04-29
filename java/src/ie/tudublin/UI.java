@@ -11,6 +11,7 @@ public class UI extends PApplet
 {
     boolean[] keys = new boolean[1024];
     PImage img1, img2, img3, img4, img5, img6;
+    Button b;
 
     public void keyPressed()
     {
@@ -78,7 +79,7 @@ public class UI extends PApplet
         line(90, 570, 770, 570);
         line(770, 570, 770, 90);
 
-        image(img1, 100, 100);
+        image(img2, 80, 100, width / 4, height / 4);
 
 
         //Mouse cursor
@@ -91,7 +92,7 @@ public class UI extends PApplet
         //UI Title
         textSize(40);
         text("DOOM CODEX", 40, 70);
-        fill(205,0,0);
+        fill(255);
 
         //Radar
         radar.update();
