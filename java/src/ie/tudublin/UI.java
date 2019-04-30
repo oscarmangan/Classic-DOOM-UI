@@ -17,6 +17,8 @@ public class UI extends PApplet
     float buttonXBorder = 43;
     float buttonYBorder = 90;
 
+    PImage img1, img2, img3, img4, img5, img6;
+
     public void keyPressed()
     {
         keys[keyCode] = true;
@@ -43,6 +45,7 @@ public class UI extends PApplet
     }
 
     String fetchDemon = " ";
+    String fetchImage = " ";
 
     public void printCSV() {
         for (Demon demon : demons) {
@@ -58,14 +61,8 @@ public class UI extends PApplet
     }
 
     Radar radar;
-    Circle c1;
-    Circle c2;
-    Circle c3;
-    Circle c4;
-    Circle c5;
-    Circle c6;
-    Circle c7;
-    Circle c8;
+    Circle c1,c2,c3,c4,c5,c6,c7,c8;
+    Spinner sp1,sp2,sp3,sp4;
 
     public void setup()
     {
@@ -80,6 +77,22 @@ public class UI extends PApplet
         c6 = new Circle(this, 2, 700, 300, 30, 2);
         c7 = new Circle(this, 2, 700, 350, 30, 2);
         c8 = new Circle(this, 2, 700, 400, 30, 2);
+
+        //Loading spinner animations
+        sp1 = new Spinner(this, 635, 245, 1, 1, 1);
+        sp2 = new Spinner(this, 635, 335, 1, 1, 1);
+        sp3 = new Spinner(this, 635, 425, 1, 1, 1);
+        sp4 = new Spinner(this, 635, 515, 1, 1, 1);
+
+        //Loading images into program
+        img1 = loadImage("imp.png");
+        img2 = loadImage("baron.png");
+        img3 = loadImage("cacodemon.png");
+        img4 = loadImage("hellghast.png");
+        img5 = loadImage("revenant.png");
+        img6 = loadImage("possessed.png");
+
+        //Loading and printing data from codex.csv
         loadCSV();
         printCSV();
     }
@@ -197,6 +210,12 @@ public class UI extends PApplet
         drawImageFrame();
         displayDemonInfo();
         drawMouse();
+
+        //Animated spinners
+        sp1.render();
+        sp2.render();
+        sp3.render();
+        sp4.render();
 
         if (checkKey(LEFT))
         {
