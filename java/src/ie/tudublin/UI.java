@@ -176,31 +176,27 @@ public class UI extends PApplet
 
         if (select == 0)
         {
-            image(img1,43,180);
+            imgselect = img1;
         }
         if (select == 1)
         {
-            image(img2, 43, 180);
-
+            imgselect = img2;
         }
         if (select == 2)
         {
-            image(img3, 43, 180);
-
+            imgselect = img3;
         }
         if (select == 3)
         {
-            image(img4, 43, 180);
-
+            imgselect = img4;
         }
         if (select == 4)
         {
-            image(img5, 43, 180);
-
+            imgselect = img5;
         }
         if (select == 5)
         {
-            image(img6, 43, 180);
+            imgselect = img6;
         }
     }
 
@@ -212,11 +208,6 @@ public class UI extends PApplet
         stroke(255,0,0);
         fill(145, 0, 0);
         rect(43, 180, 202, 210);
-    }
-
-    public void drawImage()
-    {
-
     }
 
     public void displayDemonInfo()
@@ -273,6 +264,34 @@ public class UI extends PApplet
         drawImageFrame();
         displayDemonInfo();
         drawMouse();
+
+        /*If loop to display the images once the user clicks on the specific demon button.
+        Although messy, I used an if loop as Processing would not run any of the UI when using
+        a method for this*/
+        if(imgselect == img1)
+        {
+            image(img1, 43, 185);
+        }
+        if(imgselect == img2)
+        {
+            image(img2, 43, 185);
+        }
+        if(imgselect == img3)
+        {
+            image(img3, 43, 185);
+        }
+        if(imgselect == img4)
+        {
+            image(img4, 43, 185);
+        }
+        if(imgselect == img5)
+        {
+            image(img5, 43, 185);
+        }
+        if(imgselect == img6)
+        {
+            image(img6, 43, 185);
+        }
 
         //Animated spinners
         sp1.render();
