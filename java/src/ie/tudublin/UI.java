@@ -58,6 +58,10 @@ public class UI extends PApplet
     Circle c2;
     Circle c3;
     Circle c4;
+    Circle c5;
+    Circle c6;
+    Circle c7;
+    Circle c8;
 
     public void setup()
     {
@@ -68,6 +72,10 @@ public class UI extends PApplet
         c2 = new Circle(this, 2, 740, 300, 30, 2);
         c3 = new Circle(this, 2, 740, 350, 30, 2);
         c4 = new Circle(this, 2, 740, 400, 30, 2);
+        c5 = new Circle(this, 2, 700, 250, 30, 2);
+        c6 = new Circle(this, 2, 700, 300, 30, 2);
+        c7 = new Circle(this, 2, 700, 350, 30, 2);
+        c8 = new Circle(this, 2, 700, 400, 30, 2);
         loadCSV();
         printCSV();
     }
@@ -92,7 +100,7 @@ public class UI extends PApplet
             Demon dem = demons.get(i);
             float x = 43 + (i * (buttonWidth)); //puts buttons in a row
             float y = 90;
-            fill(205,0,0);
+            fill(145,0,0);
             rect(x,y,buttonWidth,buttonHeight); //draws each button
             textAlign(LEFT, CENTER);
             fill(255);
@@ -106,8 +114,20 @@ public class UI extends PApplet
         fill(255);
         text("SNAPSHOT:", 42, 150);
         stroke(255,0,0);
-        noFill();
+        fill(145, 0, 0);
         rect(43, 180, 202, 202);
+    }
+
+    public void displayDemonInfo()
+    {
+        textSize(25);
+        fill(255);
+        text("INFORMATION:", 262, 150);
+        fill(145, 0, 0);
+        rect(262, 180, 320, 202);
+        textSize(23);
+        fill(255);
+        text("\nName: \nHealth: \nAttack: \nSpecial: \nOrigin: ", 272, 252);
     }
 
     public void draw()
@@ -135,9 +155,18 @@ public class UI extends PApplet
         c3.updateY();
         c4.render();
         c4.updateY();
+        c5.render();
+        c5.updateY();
+        c6.render();
+        c6.updateY();
+        c7.render();
+        c7.updateY();
+        c8.render();
+        c8.updateY();
 
         drawDemonButtons();
         drawImageFrame();
+        displayDemonInfo();
 
         if (checkKey(LEFT))
         {
