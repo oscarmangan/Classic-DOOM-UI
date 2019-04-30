@@ -52,12 +52,20 @@ public class UI extends PApplet
     }
 
     Radar radar;
+    Circle c1;
+    Circle c2;
+    Circle c3;
+    Circle c4;
 
     public void setup()
     {
        // b = new Button(this, 50, 50, 100, 50, "I am a button");
         //mc = new MovingCircle(this, width / 2, height * .75f, 50);
         radar = new Radar(this, 1, 680, height / 5, 50);
+        c1 = new Circle(this, 2, 740, 250, 30, 2);
+        c2 = new Circle(this, 2, 740, 300, 30, 2);
+        c3 = new Circle(this, 2, 740, 350, 30, 2);
+        c4 = new Circle(this, 2, 740, 400, 30, 2);
         loadCSV();
         printCSV();
         img1 = loadImage("imp.png");
@@ -81,7 +89,6 @@ public class UI extends PApplet
 
         image(img2, 80, 100, width / 4, height / 4);
 
-
         //Mouse cursor
         line(mouseX, mouseY, mouseX + width, mouseY);
         line(mouseX, mouseY, mouseX - width, mouseY);
@@ -97,6 +104,16 @@ public class UI extends PApplet
         //Radar
         radar.update();
         radar.render();
+
+        //Animated circles
+        c1.render();
+        c1.updateY();
+        c2.render();
+        c2.updateY();
+        c3.render();
+        c3.updateY();
+        c4.render();
+        c4.updateY();
 
         if (checkKey(LEFT))
         {
