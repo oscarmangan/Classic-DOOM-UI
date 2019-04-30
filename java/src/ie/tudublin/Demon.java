@@ -74,7 +74,7 @@ public class Demon
 
     public String toString()
     {
-        return name + "\t" + health + "\t" + attack + "\t" + special + "\t" + origin + "\t" + image;  
+        return name + "\n" + health + "\n" + attack + "\n" + special + "\n" + origin;  
     }
 
     public Demon(TableRow row)

@@ -14,6 +14,8 @@ public class UI extends PApplet
 
     float buttonHeight = 35;
     float buttonWidth = 90;
+    float buttonXBorder = 43;
+    float buttonYBorder = 90;
 
     public void keyPressed()
     {
@@ -39,6 +41,8 @@ public class UI extends PApplet
             demons.add(demon);
         }
     }
+
+    String fetchDemon = " ";
 
     public void printCSV() {
         for (Demon demon : demons) {
@@ -88,6 +92,7 @@ public class UI extends PApplet
         line(mouseX, mouseY, mouseX, mouseY - height);
         noCursor();
     }
+
     public void drawDemonButtons()
     {
         textSize(40);
@@ -98,13 +103,36 @@ public class UI extends PApplet
         for(int i = 0; i < demons.size(); i++)
         {
             Demon dem = demons.get(i);
-            float x = 43 + (i * (buttonWidth)); //puts buttons in a row
-            float y = 90;
+            float x = buttonXBorder + (i * (buttonWidth)); //puts buttons in a row
+            float y = buttonYBorder;
             fill(145,0,0);
             rect(x,y,buttonWidth,buttonHeight); //draws each button
             textAlign(LEFT, CENTER);
             fill(255);
             text(dem.getName(), x + 10, y + buttonHeight * 0.5f);
+        }
+    }
+
+    public void mouseClicked()
+    {
+        int select = -1;
+
+        if(mouseY > buttonYBorder && mouseY < buttonYBorder + buttonHeight)
+        {
+            for(int i = 0; i < demons.size(); i++)
+            {
+                float xButton = buttonXBorder + (i * (buttonWidth));
+                if(mouseX > xButton && mouseX < xButton + buttonWidth)
+                {
+                    select = i;
+                    break;
+                }
+            } 
+        }
+
+        if (select != -1) //if one of the buttons were clicked
+        {
+            fetchDemon = demons.get(select).toString();
         }
     }
 
@@ -128,6 +156,7 @@ public class UI extends PApplet
         textSize(23);
         fill(255);
         text("\nName: \nHealth: \nAttack: \nSpecial: \nOrigin: ", 272, 252);
+        text(fetchDemon, 382, 270);
     }
 
     public void draw()
@@ -140,7 +169,7 @@ public class UI extends PApplet
         line(30, 510, 90, 570);
         line(90, 570, 770, 570);
         line(770, 570, 770, 90);
-        drawMouse();
+        
 
         //Radar
         radar.update();
@@ -167,6 +196,7 @@ public class UI extends PApplet
         drawDemonButtons();
         drawImageFrame();
         displayDemonInfo();
+        drawMouse();
 
         if (checkKey(LEFT))
         {
