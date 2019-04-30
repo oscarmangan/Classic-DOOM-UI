@@ -46,6 +46,8 @@ public class UI extends PApplet
 
     String fetchDemon = " ";
     String fetchImage = " ";
+    int t = 0;
+    int z = 0;
 
     public void printCSV() {
         for (Demon demon : demons) {
@@ -79,10 +81,10 @@ public class UI extends PApplet
         c8 = new Circle(this, 2, 700, 400, 30, 2);
 
         //Loading spinner animations
-        sp1 = new Spinner(this, 635, 245, 1, 1, 1);
-        sp2 = new Spinner(this, 635, 335, 1, 1, 1);
-        sp3 = new Spinner(this, 635, 425, 1, 1, 1);
-        sp4 = new Spinner(this, 635, 515, 1, 1, 1);
+        sp1 = new Spinner(this, 635, 245, 1);
+        sp2 = new Spinner(this, 635, 335, 1);
+        sp3 = new Spinner(this, 635, 425, 1);
+        sp4 = new Spinner(this, 635, 515, 1);
 
         //Loading images into program
         img1 = loadImage("imp.png");
@@ -104,6 +106,30 @@ public class UI extends PApplet
         line(mouseX, mouseY, mouseX, mouseY + height);
         line(mouseX, mouseY, mouseX, mouseY - height);
         noCursor();
+    }
+
+    public void drawXScanner()
+    {
+        stroke(110,0,0);
+        strokeWeight(20);
+        line(t,0,t,600);
+        t++;
+        if(t == 800)
+        {
+            t = 0;
+        }
+    }
+
+    public void drawYScanner()
+    {
+        stroke(110,0,0);
+        strokeWeight(20);
+        line(0,z,800,z);
+        z++;
+        if(z == 600)
+        {
+            z = 0;
+        }
     }
 
     public void drawDemonButtons()
@@ -153,7 +179,7 @@ public class UI extends PApplet
     {
         textSize(25);
         fill(255);
-        text("SNAPSHOT:", 42, 150);
+        text("GALLERY:", 42, 150);
         stroke(255,0,0);
         fill(145, 0, 0);
         rect(43, 180, 202, 202);
@@ -175,6 +201,9 @@ public class UI extends PApplet
     public void draw()
     {
         background(85,0,0);
+        drawXScanner();
+        drawYScanner();
+        strokeWeight(3);
         stroke(255, 0, 0);
         line(30, 30, 710, 30);
         line(710, 30, 770, 90);
