@@ -72,6 +72,14 @@ public class UI extends PApplet
         printCSV();
     }
 
+    public void drawMouse()
+    {
+        line(mouseX, mouseY, mouseX + width, mouseY);
+        line(mouseX, mouseY, mouseX - width, mouseY);
+        line(mouseX, mouseY, mouseX, mouseY + height);
+        line(mouseX, mouseY, mouseX, mouseY - height);
+        noCursor();
+    }
     public void drawDemonButtons()
     {
         textSize(40);
@@ -92,6 +100,16 @@ public class UI extends PApplet
         }
     }
 
+    public void drawImageFrame()
+    {
+        textSize(25);
+        fill(255);
+        text("SNAPSHOT:", 42, 150);
+        stroke(255,0,0);
+        noFill();
+        rect(43, 180, 202, 202);
+    }
+
     public void draw()
     {
         background(85,0,0);
@@ -102,17 +120,7 @@ public class UI extends PApplet
         line(30, 510, 90, 570);
         line(90, 570, 770, 570);
         line(770, 570, 770, 90);
-
-        //Mouse cursor
-        line(mouseX, mouseY, mouseX + width, mouseY);
-        line(mouseX, mouseY, mouseX - width, mouseY);
-        line(mouseX, mouseY, mouseX, mouseY + height);
-        line(mouseX, mouseY, mouseX, mouseY - height);
-        noCursor();
-
-        //UI Title
-        
-        
+        drawMouse();
 
         //Radar
         radar.update();
@@ -129,6 +137,7 @@ public class UI extends PApplet
         c4.updateY();
 
         drawDemonButtons();
+        drawImageFrame();
 
         if (checkKey(LEFT))
         {
