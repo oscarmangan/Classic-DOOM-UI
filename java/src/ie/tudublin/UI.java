@@ -17,7 +17,7 @@ public class UI extends PApplet
     float buttonXBorder = 43;
     float buttonYBorder = 90;
 
-    PImage img1, img2, img3, img4, img5, img6;
+    PImage img1, img2, img3, img4, img5, img6, imgselect;
 
     public void keyPressed()
     {
@@ -31,7 +31,7 @@ public class UI extends PApplet
 
     public boolean checkKey(int c)
     {
-        return keys[c] || keys [Character.toUpperCase(c)];
+        return keys[LEFT] || keys [RIGHT];
     }
     
     public void loadCSV()
@@ -173,6 +173,35 @@ public class UI extends PApplet
         {
             fetchDemon = demons.get(select).toString();
         }
+
+        if (select == 0)
+        {
+            image(img1,43,180);
+        }
+        if (select == 1)
+        {
+            image(img2, 43, 180);
+
+        }
+        if (select == 2)
+        {
+            image(img3, 43, 180);
+
+        }
+        if (select == 3)
+        {
+            image(img4, 43, 180);
+
+        }
+        if (select == 4)
+        {
+            image(img5, 43, 180);
+
+        }
+        if (select == 5)
+        {
+            image(img6, 43, 180);
+        }
     }
 
     public void drawImageFrame()
@@ -182,7 +211,12 @@ public class UI extends PApplet
         text("GALLERY:", 42, 150);
         stroke(255,0,0);
         fill(145, 0, 0);
-        rect(43, 180, 202, 202);
+        rect(43, 180, 202, 210);
+    }
+
+    public void drawImage()
+    {
+
     }
 
     public void displayDemonInfo()
@@ -191,7 +225,7 @@ public class UI extends PApplet
         fill(255);
         text("INFORMATION:", 262, 150);
         fill(145, 0, 0);
-        rect(262, 180, 320, 202);
+        rect(262, 180, 320, 210);
         textSize(23);
         fill(255);
         text("\nName: \nHealth: \nAttack: \nSpecial: \nOrigin: ", 272, 252);
