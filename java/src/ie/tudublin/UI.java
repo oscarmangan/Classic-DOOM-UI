@@ -10,8 +10,10 @@ import processing.data.TableRow;
 public class UI extends PApplet
 {
     boolean[] keys = new boolean[1024];
-    PImage img1, img2, img3, img4, img5, img6;
     Button b;
+
+    float buttonHeight = 35;
+    float buttonWidth = 90;
 
     public void keyPressed()
     {
@@ -68,12 +70,26 @@ public class UI extends PApplet
         c4 = new Circle(this, 2, 740, 400, 30, 2);
         loadCSV();
         printCSV();
-        img1 = loadImage("imp.png");
-        img2 = loadImage("baron.png");
-        img3 = loadImage("possessed.png");
-        img4 = loadImage("revenant.png");
-        img5 = loadImage("cacodemon.png");
-        img6 = loadImage("hellghast.png");
+    }
+
+    public void drawDemonButtons()
+    {
+        textSize(40);
+        fill(255);
+        text("DOOM CODEX", 40, 60);
+        stroke(255,85,0);
+        textSize(13);
+        for(int i = 0; i < demons.size(); i++)
+        {
+            Demon dem = demons.get(i);
+            float x = 43 + (i * (buttonWidth)); //puts buttons in a row
+            float y = 90;
+            fill(205,0,0);
+            rect(x,y,buttonWidth,buttonHeight); //draws each button
+            textAlign(LEFT, CENTER);
+            fill(255);
+            text(dem.getName(), x + 10, y + buttonHeight * 0.5f);
+        }
     }
 
     public void draw()
@@ -87,8 +103,6 @@ public class UI extends PApplet
         line(90, 570, 770, 570);
         line(770, 570, 770, 90);
 
-        image(img2, 80, 100, width / 4, height / 4);
-
         //Mouse cursor
         line(mouseX, mouseY, mouseX + width, mouseY);
         line(mouseX, mouseY, mouseX - width, mouseY);
@@ -97,9 +111,8 @@ public class UI extends PApplet
         noCursor();
 
         //UI Title
-        textSize(40);
-        text("DOOM CODEX", 40, 70);
-        fill(255);
+        
+        
 
         //Radar
         radar.update();
@@ -114,6 +127,8 @@ public class UI extends PApplet
         c3.updateY();
         c4.render();
         c4.updateY();
+
+        drawDemonButtons();
 
         if (checkKey(LEFT))
         {
