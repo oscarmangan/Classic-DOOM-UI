@@ -6,6 +6,8 @@ Student Number: C17486986
 
 # Description of the assignment
 
+The user interface I made is based and inspired on the original DOOM series video games from the early 1990s. The interface opens, and has several animated objects appearing on screen. The overall colour palette is red, as the same as the old games. The UI, along with the animations and drawings, will display an image of one of the enemies encountered in the DOOM games. The user will be able to use arrow buttons to select which enemy is displayed. Along with the image of the enemy, it will display the enemies statistics; the name of the demon, health points, attack points, the name of it's special attack, and the origin of the demon.
+
 # Instructions
 
 # How it works
