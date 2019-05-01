@@ -21,76 +21,219 @@ If the user presses the SPACE bar, the rage meter at the bottom of the UI will f
 There is a small text box at the bottom of the UI to give the user the control guide.
 
 # How it works
+Note! '...' is to cut down on repeating code, to make things easier to read in the report.
 
-The main class is used to Run the UI class by calling and instantiating it. The UI class, also declares and instantiates the classes Radar, Spinner, Circle, Rage and uses the Demon class in an ArrayList. Inside
-
-# What I am most proud of in the assignment
-
-# Markdown Tutorial
-
-This is *emphasis*
-
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
+The main class is used to Run the UI class by calling and instantiating it. The UI class, also declares and instantiates the classes Radar, Spinner, Circle, Rage and uses the Demon class in an ArrayList. It also calls render() and update() within the draw() method, which loops while the UI is running, until it is closed. As seen here:
 
 ```Java
-public void render()
+public void setup()
 {
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
+       // b = new Button(this, 50, 50, 100, 50, "I am a button");
+        //mc = new MovingCircle(this, width / 2, height * .75f, 50);
+        radar = new Radar(this, 1, 680, height / 5, 50);
+        radar2 = new Radar(this, -1, 120, height - height / 5, 50);
+        c1 = new Circle(this, 2, 740, 250, 30, 2);
+        ....
+        c8 = new Circle(this, 2, 700, 400, 30, 2);
+
+        //Loading spinner animations
+        sp1 = new Spinner(this, 635, 245, 1);
+        ...
+        sp4 = new Spinner(this, 635, 515, 1);
+
+        //Loading images into program
+        img1 = loadImage("imp.png");
+        ....
+        img6 = loadImage("possessed.png");
+        uac = loadImage("uac.png");
+
+        //Rage meter
+        ragelevel = new Rage(this, 0, 220, 410, 0, 50);
+
+        //Loading and printing data from codex.csv
+        loadCSV();
+        printCSV();
+}
+public void draw()
+{
+        //Animated radar
+   	radar.update();
+        radar.render();
+        radar2.update();
+        radar2.render();
+
+        //Animated circles
+        c1.render();
+        c1.updateY();
+        ...
+        c8.render();
+        c8.updateY();
+
+        //Animated spinners
+        sp1.render();
+        sp1.update();
+        ...
+        sp4.render();
+        sp4.update();
 }
 ```
+#### ArrayList
+To implment the data from my 'codex.csv' file into the program. I used an ArrayList, as well as a seperate Demon class. The code below declares the ArrayList, as well as loading the data by iterating over each row in the table. I made a printCSV function to test and make sure the information was correctly printing to the Output. 
 
-So is this without specifying the language:
+```Java
+private ArrayList<Demon> demons = new ArrayList<Demon>();
+
+public void loadCSV(){
+        Table table = loadTable("codex.csv", "header");
+        for (TableRow row : table.rows()) 
+        {
+            Demon demon = new Demon(row);
+            demons.add(demon);
+        }
+    }
+public void printCSV() {
+        for (Demon demon : demons) {
+            System.out.println(demon);
+        }
+    }
+```
+
+To display the demon information to visible text on the screen, I created the displayDemonInfo() method. I declared an empty String called fetchDemon also.
+
+```Java
+String fetchDemon = " ";
+
+public void displayDemonInfo()
+    {
+        textSize(25);
+        fill(255);
+        text("INFORMATION:", 262, 150);
+        fill(145, 0, 0);
+        rect(262, 180, 320, 210);
+        textSize(23);
+        fill(255);
+        text("\nName: \nHealth: \nAttack: \nSpecial: \nOrigin: ", 272, 252);
+        text(fetchDemon, 382, 270);
+    }
 
 ```
+#### Getting the mouse click to work
+To get this to work, I created a mouseClicked method, which uses the co-ordinates of the mouse cursor in the window to determine if the mouse is within the co-ordinates of the buttons. I used a variable called 'select', which is -1, unless the mouse button is clicked. When the button is clicked, the value for select is changed to whatever row of the table of demons the user has picked. 
+
+This worked in getting the text information to display. To get the image of the selected demon to display, I had to create a PImage variable 'imgselect'. Then using if statements to compare through the list of images already loaded into the program, and setting the value of 'imgselect' accordingly. i.e. if Select is 2, then it will display the 3rd image out of the 6.
+
+Code:
+```Java
+public void mouseClicked()
+    {
+        int select = -1;
+
+        if(mouseY > buttonYBorder && mouseY < buttonYBorder + buttonHeight)
+        {
+            for(int i = 0; i < demons.size(); i++)
+            {
+                float xButton = buttonXBorder + (i * (buttonWidth));
+                if(mouseX > xButton && mouseX < xButton + buttonWidth)
+                {
+                    select = i;
+                    break;
+                }
+            } 
+        }
+
+        if (select != -1) //if one of the buttons were clicked
+        {
+            fetchDemon = demons.get(select).toString();
+        }
+
+        if (select == 0)
+        {
+            imgselect = img1;
+        }
+        if (select == 1)
+        {
+            imgselect = img2;
+        }
+        ...
+        if (select == 5)
+        {
+            imgselect = img6;
+        }
+    }
+
+```
+
+#### RAGE meter bar
+For this to work, I created a Rage class, which was declared and instantiated in UI, with a render() and update() method. For the SPACE bar to have an effect, I used the checkKeys method, then incrementing the length dimensions of the rectangle in the draw() method.
+```Java
 public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
+    {
+        ui.strokeWeight(2);
+        ui.stroke(255,0,0);
+        ui.fill(145,0,0);
+        ui.rect(x,y,362,50);
+        ui.fill(255,0,0);
+        ui.rect(x,y,length,height);
+        ui.fill(255);
+        ui.textSize(30);
+        ui.text("RAGE METER", x + 10, y + 21);
+    }
+
+    public void update()
+    {
+        if(ui.checkKey(' '))
+        {
+            length++;
+            if(length > 362)
+            {
+                length = 362;
+            }
+        }
+        else
+        {
+            length--;
+            if(length < 0)
+            {
+                length = 0;
+            }
+        }
+    }
 ```
 
-This is an image using a relative URL:
+When the space bar was pressed, as the rage bar fills up, I used similar code in the Radar and Spinner classes to make the rotation speed up.
 
-![An image](images/p8.png)
+```Java
+public void update()
+    {
+        HALF_PI += 0.1;
+        rad += 0.1;
+        if(ui.checkKey(' '))
+        {
+            HALF_PI += 0.2;
+            rad += 0.2;
+        }
+    }
+    
+public void update()
+    {
+        theta += PApplet.TWO_PI * timeDelta * frequency;
+        if(ui.checkKey(' '))
+        {
+            theta += 0.5f;
+        }
+    }    
+```
 
-This is an image using an absolute URL:
+# What I am most proud of in the assignment
+I am happy with the overall theme and idea I had. I'm too young to remember the original DOOM games, however I'm a big fan of the reboot in 2016. It was fun to try and come up with something, but also having free reign to come up with any kind of SciFi design. The interface is quite simplistic, with some interactivity and animation. I would have liked to cleaned things up in terms of less pixelation, tried different colours, etc. I've grasped an understanding of classes, objects, inheritance, ArrayLists, etc. With more time, especially with summer coming, I would like to either improve this project, or create another one anew and make more improvements.
 
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
+I am happy that once I completed the work, I felt I learned a lot about Object Oriented Programming. I feel if I spent more time on this project, I could make it more complicated, including more procedural graphics and more animation. I was happy that I could find some kind of interactivity to include, but I feel I could come up with some more ideas in time.
+
+```
+![An image](images/pre.jpg)
+![An image](images/use.jpg)
 
 This is a youtube video:
 
 [![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
 
