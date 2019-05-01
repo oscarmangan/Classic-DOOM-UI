@@ -8,7 +8,6 @@ public class Spinner
     private float rad;
     UI ui;
 
-
     public Spinner(UI ui, float x, float y, float HALF_PI)
     {
         this.x = x;

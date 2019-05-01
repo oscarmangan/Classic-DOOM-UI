@@ -11,6 +11,21 @@ public class Demon
     private String origin;
     private String image;
 
+    public String toString()
+    {
+        return name + "\n" + health + "\n" + attack + "\n" + special + "\n" + origin;  
+    }
+
+    public Demon(TableRow row)
+    {
+        name = row.getString("Name");
+        health = row.getInt("Health");
+        attack = row.getInt("Attack");
+        special = row.getString("Special");
+        origin = row.getString("Origin");
+        image = row.getString("Image");
+    }
+
     //Getters and setters
     public void setName(String name)
     {
@@ -70,21 +85,6 @@ public class Demon
     public String getImage()
     {
         return image;
-    }
-
-    public String toString()
-    {
-        return name + "\n" + health + "\n" + attack + "\n" + special + "\n" + origin;  
-    }
-
-    public Demon(TableRow row)
-    {
-        name = row.getString("Name");
-        health = row.getInt("Health");
-        attack = row.getInt("Attack");
-        special = row.getString("Special");
-        origin = row.getString("Origin");
-        image = row.getString("Image");
     }
 
     public Demon() 

@@ -12,6 +12,11 @@ public class UI extends PApplet
     boolean[] keys = new boolean[1024];
     Button b;
     Rage ragelevel;
+    Radar radar, radar2;
+    Circle c1,c2,c3,c4,c5,c6,c7,c8;
+    Spinner sp1,sp2,sp3,sp4;
+
+    private ArrayList<Demon> demons = new ArrayList<Demon>();
 
     float buttonHeight = 35;
     float buttonWidth = 90;
@@ -19,6 +24,11 @@ public class UI extends PApplet
     float buttonYBorder = 90;
 
     PImage img1, img2, img3, img4, img5, img6, uac, imgselect;
+
+    String fetchDemon = " ";
+    String fetchImage = " ";
+    int t = 0;
+    int z = 0;
 
     public void keyPressed()
     {
@@ -44,12 +54,6 @@ public class UI extends PApplet
             demons.add(demon);
         }
     }
-
-    String fetchDemon = " ";
-    String fetchImage = " ";
-    int t = 0;
-    int z = 0;
-
     public void printCSV() {
         for (Demon demon : demons) {
             System.out.println(demon);
@@ -63,9 +67,6 @@ public class UI extends PApplet
         //fullScreen(P3D); 
     }
 
-    Radar radar, radar2;
-    Circle c1,c2,c3,c4,c5,c6,c7,c8;
-    Spinner sp1,sp2,sp3,sp4;
 
     public void setup()
     {
@@ -325,6 +326,5 @@ public class UI extends PApplet
             System.out.println("Left arrow key pressed");
         }
     }
-    private ArrayList<Demon> demons = new ArrayList<Demon>();
 }
 
