@@ -5,6 +5,7 @@ public class Spinner
     private float x;
     private float y;
     private float HALF_PI;
+    private float rad;
     UI ui;
 
 
@@ -29,9 +30,20 @@ public class Spinner
         ui.pushMatrix();
         ui.fill(255);
         ui.strokeWeight(1);
-        ui.arc(x,y,40,40,0,HALF_PI);
+        ui.arc(x,y,40,40,rad,HALF_PI);
         ui.popMatrix();
 
         ui.strokeWeight(2);
+    }
+
+    public void update()
+    {
+        HALF_PI += 0.1;
+        rad += 0.1;
+        if(ui.checkKey(' '))
+        {
+            HALF_PI += 0.2;
+            rad += 0.2;
+        }
     }
 }

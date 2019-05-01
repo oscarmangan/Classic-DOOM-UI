@@ -241,6 +241,11 @@ public class UI extends PApplet
         line(30, 510, 90, 570);
         line(90, 570, 770, 570);
         line(770, 570, 770, 90);
+        fill(145,0,0);
+        rect(220, 480, 362, 70);
+        textSize(20);
+        fill(255);
+        text("Press Space to increase RAGE \nUse the mouse to select Demons", 230, 512);
 
         //Radar
         radar.update();
@@ -305,9 +310,13 @@ public class UI extends PApplet
 
         //Animated spinners
         sp1.render();
+        sp1.update();
         sp2.render();
+        sp2.update();
         sp3.render();
+        sp3.update();
         sp4.render();
+        sp4.update();
 
         if (checkKey(LEFT))
         {

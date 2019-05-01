@@ -26,7 +26,7 @@ public class Rage extends PApplet
         ui.strokeWeight(2);
         ui.stroke(255,0,0);
         ui.fill(145,0,0);
-        ui.rect(x,y,360,50);
+        ui.rect(x,y,362,50);
         ui.fill(255,0,0);
         ui.rect(x,y,length,height);
         ui.fill(255);
