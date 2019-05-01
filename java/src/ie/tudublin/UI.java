@@ -274,6 +274,16 @@ public class UI extends PApplet
         c8.render();
         c8.updateY();
 
+         //Animated spinners
+         sp1.render();
+         sp1.update();
+         sp2.render();
+         sp2.update();
+         sp3.render();
+         sp3.update();
+         sp4.render();
+         sp4.update();
+
         drawDemonButtons();
         drawImageFrame();
         displayDemonInfo();
@@ -310,16 +320,6 @@ public class UI extends PApplet
         {
             image(img6, 43, 185);
         }
-
-        //Animated spinners
-        sp1.render();
-        sp1.update();
-        sp2.render();
-        sp2.update();
-        sp3.render();
-        sp3.update();
-        sp4.render();
-        sp4.update();
 
         if (checkKey(LEFT))
         {
