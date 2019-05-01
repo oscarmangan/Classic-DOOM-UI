@@ -11,6 +11,7 @@ public class UI extends PApplet
 {
     boolean[] keys = new boolean[1024];
     Button b;
+    Rage ragelevel;
 
     float buttonHeight = 35;
     float buttonWidth = 90;
@@ -31,7 +32,7 @@ public class UI extends PApplet
 
     public boolean checkKey(int c)
     {
-        return keys[LEFT] || keys [RIGHT];
+        return keys[c] || keys [Character.toUpperCase(c)];
     }
     
     public void loadCSV()
@@ -62,7 +63,7 @@ public class UI extends PApplet
         //fullScreen(P3D); 
     }
 
-    Radar radar;
+    Radar radar, radar2;
     Circle c1,c2,c3,c4,c5,c6,c7,c8;
     Spinner sp1,sp2,sp3,sp4;
 
@@ -71,6 +72,7 @@ public class UI extends PApplet
        // b = new Button(this, 50, 50, 100, 50, "I am a button");
         //mc = new MovingCircle(this, width / 2, height * .75f, 50);
         radar = new Radar(this, 1, 680, height / 5, 50);
+        radar2 = new Radar(this, -1, 120, height - height / 5, 50);
         c1 = new Circle(this, 2, 740, 250, 30, 2);
         c2 = new Circle(this, 2, 740, 300, 30, 2);
         c3 = new Circle(this, 2, 740, 350, 30, 2);
@@ -94,6 +96,9 @@ public class UI extends PApplet
         img5 = loadImage("revenant.png");
         img6 = loadImage("possessed.png");
 
+        //Rage meter
+        ragelevel = new Rage(this, 0, 220, 410, 0, 50);
+
         //Loading and printing data from codex.csv
         loadCSV();
         printCSV();
@@ -111,7 +116,7 @@ public class UI extends PApplet
     public void drawXScanner()
     {
         stroke(110,0,0);
-        strokeWeight(20);
+        strokeWeight(30);
         line(t,0,t,600);
         t++;
         if(t == 800)
@@ -123,7 +128,7 @@ public class UI extends PApplet
     public void drawYScanner()
     {
         stroke(110,0,0);
-        strokeWeight(20);
+        strokeWeight(30);
         line(0,z,800,z);
         z++;
         if(z == 600)
@@ -204,7 +209,7 @@ public class UI extends PApplet
     {
         textSize(25);
         fill(255);
-        text("GALLERY:", 42, 150);
+        text("IMAGE:", 42, 150);
         stroke(255,0,0);
         fill(145, 0, 0);
         rect(43, 180, 202, 210);
@@ -236,11 +241,12 @@ public class UI extends PApplet
         line(30, 510, 90, 570);
         line(90, 570, 770, 570);
         line(770, 570, 770, 90);
-        
 
         //Radar
         radar.update();
         radar.render();
+        radar2.update();
+        radar2.render();
 
         //Animated circles
         c1.render();
@@ -264,6 +270,10 @@ public class UI extends PApplet
         drawImageFrame();
         displayDemonInfo();
         drawMouse();
+
+        //Rage meter
+        ragelevel.render();
+        ragelevel.update();
 
         /*If loop to display the images once the user clicks on the specific demon button.
         Although messy, I used an if loop as Processing would not run any of the UI when using

@@ -40,6 +40,10 @@ public class Radar
     public void update()
     {
         theta += PApplet.TWO_PI * timeDelta * frequency;
+        if(ui.checkKey(' '))
+        {
+            theta += 0.5f;
+        }
     }
 
     /**
