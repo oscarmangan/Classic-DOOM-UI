@@ -26,7 +26,6 @@ public class UI extends PApplet
     PImage img1, img2, img3, img4, img5, img6, uac, imgselect;
 
     String fetchDemon = " ";
-    String fetchImage = " ";
     int t = 0;
     int z = 0;
 
