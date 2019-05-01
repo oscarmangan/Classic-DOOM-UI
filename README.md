@@ -229,7 +229,6 @@ I am happy with the overall theme and idea I had. I'm too young to remember the 
 
 I am happy that once I completed the work, I felt I learned a lot about Object Oriented Programming. I feel if I spent more time on this project, I could make it more complicated, including more procedural graphics and more animation. I was happy that I could find some kind of interactivity to include, but I feel I could come up with some more ideas in time.
 
-```
 ![An image](images/pre.jpg)
 ![An image](images/use.jpg)
 
