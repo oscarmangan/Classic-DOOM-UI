@@ -18,7 +18,7 @@ public class UI extends PApplet
     float buttonXBorder = 43;
     float buttonYBorder = 90;
 
-    PImage img1, img2, img3, img4, img5, img6, imgselect;
+    PImage img1, img2, img3, img4, img5, img6, uac, imgselect;
 
     public void keyPressed()
     {
@@ -95,6 +95,7 @@ public class UI extends PApplet
         img4 = loadImage("hellghast.png");
         img5 = loadImage("revenant.png");
         img6 = loadImage("possessed.png");
+        uac = loadImage("uac.png");
 
         //Rage meter
         ragelevel = new Rage(this, 0, 220, 410, 0, 50);
@@ -243,9 +244,10 @@ public class UI extends PApplet
         line(770, 570, 770, 90);
         fill(145,0,0);
         rect(220, 480, 362, 70);
-        textSize(20);
+        textSize(12);
         fill(255);
         text("Press Space to increase RAGE \nUse the mouse to select Demons", 230, 512);
+        image(uac, 460, 486, width / 10, height / 10);
 
         //Radar
         radar.update();
