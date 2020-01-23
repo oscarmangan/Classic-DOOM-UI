@@ -1,9 +1,3 @@
-# SciFi UI Project
-
-Name: Oscar Mangan
-
-Student Number: C17486986
-
 # Description
 
 The user interface I made is based and inspired on the original DOOM series video games from the early 1990s. The interface opens, and has several animated objects appearing on screen. The overall colour palette is red, as the same as the old games. The UI, along with the animations and drawings, will display a slideshow of the images of the enemies encountered in the DOOM games. 
