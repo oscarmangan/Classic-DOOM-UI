@@ -4,7 +4,7 @@ Name: Oscar Mangan
 
 Student Number: C17486986
 
-# Description of the assignment
+# Description
 
 The user interface I made is based and inspired on the original DOOM series video games from the early 1990s. The interface opens, and has several animated objects appearing on screen. The overall colour palette is red, as the same as the old games. The UI, along with the animations and drawings, will display a slideshow of the images of the enemies encountered in the DOOM games. 
 
@@ -223,11 +223,6 @@ public void update()
         }
     }    
 ```
-
-# What I am most proud of in the assignment
-I am happy with the overall theme and idea I had. I'm too young to remember the original DOOM games, however I'm a big fan of the reboot in 2016. It was fun to try and come up with something, but also having free reign to come up with any kind of SciFi design. The interface is quite simplistic, with some interactivity and animation. I would have liked to cleaned things up in terms of less pixelation, tried different colours, etc. I've grasped an understanding of classes, objects, inheritance, ArrayLists, etc. With more time, especially with summer coming, I would like to either improve this project, or create another one anew and make more improvements.
-
-I am happy that once I completed the work, I felt I learned a lot about Object Oriented Programming. I feel if I spent more time on this project, I could make it more complicated, including more procedural graphics and more animation. I was happy that I could find some kind of interactivity to include, but I feel I could come up with some more ideas in time.
 
 ![An image](images/pre.jpg)
 ![An image](images/use.jpg)
